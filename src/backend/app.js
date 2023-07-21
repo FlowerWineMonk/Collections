@@ -50,5 +50,5 @@ app.get("/public/home", (req, res) => {
 });
 
 app.listen(PORT, () =>
-  console.log(`You server is running on http://localhost:${PORT}`)
+  console.log(`You server is running on http://localhost:${PORT}/public/home`)
 );
