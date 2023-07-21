@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" defer src="/src/main.js"></script>
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav class="header-navbar">
+          <ul>
+            <li>
+              <a href="login.html"><i class="fa fa-fw fa-user"></i>Login</a>
+            </li>
+            <li>
+              <a href="contact.html"
+                ><i class="fa fa-fw fa-envelope"></i>Contact us</a
+              >
+            </li>
+            <li>
+              <a href="about.html"><i class="fa fa-file"></i>About</a>
+            </li>
+            <li>
+              <a href="home.html"><i class="fa fa-fw fa-home"></i> Home</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="index-main">
+        <div class="loginBox">
+          <!-- Sign up -->
+          <div class="signUpPageContent hidden">
+            <label for="email"><b>Email</b></label>
+            <input
+              type="text"
+              placeholder="Enter Email"
+              name="email"
+              class="signUpEmail"
+            />
+            <label for="UsernameSignup"><b>Username</b></label>
+            <input
+              type="Username"
+              placeholder="Enter username"
+              name="UsernameSignup"
+              class="signUpUsername"
+            />
+            <label for="password"><b>Password</b></label>
+            <input
+              type="Password"
+              placeholder="Enter Password"
+              name="password"
+              class="signUpPassword"
+            />
+            <label for="passwordConfirmation"><b>Password</b></label>
+            <input
+              type="Password"
+              placeholder="Confirm Password"
+              name="passwordConfirmation"
+              class="signUpPassword"
+            />
+            <button class="signUpButton">Sign up</button>
+
+            <p class="message">
+              Already have an account?
+              <span><button class="messagePageReload">Log In</button></span>
+            </p>
+          </div>
+          <!-- Sign up ends -->
+
+          <!-- Log in -->
+          <div class="logInPageContent">
+            <label for="UsernameLogin" type="submit"><b>Username</b></label>
+            <input
+              type="text"
+              placeholder="Enter Username"
+              name="UsernameLogin"
+              class="logInUserName"
+              required
+            />
+
+            <label for="psw"><b>Password</b></label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              class="logInPassword"
+              required
+            />
+
+            <button class="logInButton" type="submit">Log In</button>
+
+            <p class="message">
+              Don't have an account?
+              <span><button class="messagePageReload">Sign up</button></span>
+            </p>
+          </div>
+        </div>
+        <!-- Log in ends -->
+      </main>
+
+      <footer class="index-footer">
+        <div class="footer-icons">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
