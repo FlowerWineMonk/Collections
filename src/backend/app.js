@@ -45,6 +45,15 @@ app.get("/public/home", (req, res) => {
       seller: "Liquor Mountain Ginza 777",
       price: "$800,000.00",
     },
+
+    {
+      image: "",
+      name: "Bushmills Black Bush",
+      category: "Irish",
+      quality: "Standart",
+      seller: "Irish & Bourbon Whiskey",
+      price: "$30.00",
+    },
   ];
 
   res.json(whiskey);
