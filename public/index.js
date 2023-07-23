@@ -3,7 +3,6 @@ const secondMainPage = document.querySelector(".main-mini-home");
 
 // dropdownbtn
 const list = document.querySelector(".list");
-const selectElement = document.querySelector('select[name="options"]');
 
 // login sign up handler
 const logIn_signUp_handler = document.querySelectorAll(".messagePageReload");
@@ -13,6 +12,10 @@ const signUp_Toggle = document.querySelector(".signUpPageContent");
 // handling header .navbar
 const activePage = window.location.pathname;
 const active_header_handler = document.querySelectorAll("nav a");
+
+// implementing search
+const search = document.querySelector(".search");
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // connecting backend with frontend
@@ -25,25 +28,35 @@ const connectingBackend = async function () {
     const data = await response.json();
     console.log(data);
 
-    indexMainPageDetails(data);
+    listDropDownButton(data);
+
+    list.addEventListener("change", function () {
+      listDropDownButton(data);
+    });
   } catch (err) {
     console.error(err);
   }
 };
 connectingBackend();
 
-// api display
-const indexMainPageDetails = function (whiskeyArr) {
-  whiskeyArr.forEach((whiskey) => {
-    const displayFrontend = ` 
-         
+// handling dropdown button & api display
+const listDropDownButton = function (whiskeyArr) {
+  secondMainPage.innerHTML = "";
+
+  const listValue = list.value;
+
+  const filteredWhiskeys = whiskeyArr.filter((whiskey) => {
+    return listValue === "all-options" || listValue === whiskey.category;
+  });
+
+  filteredWhiskeys.forEach((whiskey) => {
+    const displayFrontend = `    
     <img src="${whiskey.image}" alt="Whiskey">
     <p>Name: ${whiskey.name}</p>
     <p>Category: ${whiskey.category}</p>
     <p>Quality: ${whiskey.quality}</p>
     <p>Seller: ${whiskey.seller}</p> 
     <p>Price: ${whiskey.price}</p>  
-   
     `;
     secondMainPage.insertAdjacentHTML("beforeend", displayFrontend);
   });
@@ -63,4 +76,9 @@ active_header_handler.forEach((link) => {
     link.classList.add("active");
   }
 });
-// handling dropdown button
+
+// implementing search
+// const search = document.querySelector(".search");
+search.addEventListener("input", function() {
+  
+})
