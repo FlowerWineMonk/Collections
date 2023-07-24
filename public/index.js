@@ -21,7 +21,7 @@ const search = document.querySelector(".search");
 // connecting backend with frontend
 const connectingBackend = async function () {
   try {
-    const response = await fetch(`/public/home`);
+    const response = await fetch(`http://localhost:4000/public/home`);
     // http://localhost:4000/public/home
 
     if (!response.ok) throw new Error(`Failed to fetch it: ${response.status}`);
@@ -36,7 +36,7 @@ const connectingBackend = async function () {
       listDropDownButton(data);
     });
   } catch (err) {
-    console.error(err);
+    secondMainPage.innerHTML = "<p>An error occurred. Please try again later.</p>";
   }
 };
 connectingBackend();
