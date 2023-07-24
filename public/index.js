@@ -22,21 +22,27 @@ const search = document.querySelector(".search");
 const connectingBackend = async function () {
   try {
     const response = await fetch(`http://localhost:4000/public/home`);
-    // http://localhost:4000/public/home
+    // https://unique-collections.onrender.com/home
 
     if (!response.ok) throw new Error(`Failed to fetch it: ${response.status}`);
 
     const data = await response.json();
     console.log(data);
 
-    searchHandler(data);
-    listDropDownButton(data);
+    searchHandler(data); // search
+
+    listDropDownButton(data); // list
+
+    search.addEventListener("input", function () {
+      searchHandler(data);
+    }); // search
 
     list.addEventListener("change", function () {
       listDropDownButton(data);
-    });
+    }); // list
   } catch (err) {
-    secondMainPage.innerHTML = "<p>An error occurred. Please try again later.</p>";
+    secondMainPage.innerHTML =
+      "<p>An error occurred. Please try again later.</p>";
   }
 };
 connectingBackend();
@@ -64,6 +70,35 @@ const listDropDownButton = function (whiskeyArr) {
   });
 };
 
+// implementing search
+const searchHandler = function (whiskeyArr) {
+  secondMainPage.innerHTML = "";
+  const searchValue = search.value.toLowerCase(); // maybe include trim()
+
+  const filteredData = whiskeyArr.filter((whiskey) => {
+    return (
+      searchValue === "" ||
+      whiskey.name.toLowerCase().includes(searchValue) ||
+      whiskey.category.toLowerCase().includes(searchValue) ||
+      whiskey.quality.toLowerCase().includes(searchValue)
+    );
+  });
+
+  filteredData.forEach((whiskey) => {
+    const displayFrontend = `    
+      <img src="${whiskey.image}" alt="Whiskey">
+      <p>Name: ${whiskey.name}</p>
+      <p>Category: ${whiskey.category}</p>
+      <p>Quality: ${whiskey.quality}</p>
+      <p>Seller: ${whiskey.seller}</p> 
+      <p>Price: ${whiskey.price}</p>  
+      `;
+    secondMainPage.insertAdjacentHTML("beforeend", displayFrontend);
+  });
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
 // handling log in and sign up
 logIn_signUp_handler.forEach(function (button) {
   button.addEventListener("click", function () {
@@ -78,32 +113,3 @@ active_header_handler.forEach((link) => {
     link.classList.add("active");
   }
 });
-
-// implementing search
-const searchHandler = function (whiskeyArr) {
-  search.addEventListener("input", function (event) {
-    secondMainPage.innerHTML = "";
-    const searchValue = event.target.value.toLowerCase(); // maybe include trim()
-
-    const filteredData = whiskeyArr.filter((whiskey) => {
-      return (
-        searchValue === "" ||
-        whiskey.name.toLowerCase().includes(searchValue) ||
-        whiskey.category.toLowerCase().includes(searchValue) ||
-        whiskey.quality.toLowerCase().includes(searchValue)
-      );
-    });
-
-    filteredData.forEach((whiskey) => {
-      const displayFrontend = `    
-      <img src="${whiskey.image}" alt="Whiskey">
-      <p>Name: ${whiskey.name}</p>
-      <p>Category: ${whiskey.category}</p>
-      <p>Quality: ${whiskey.quality}</p>
-      <p>Seller: ${whiskey.seller}</p> 
-      <p>Price: ${whiskey.price}</p>  
-      `;
-      secondMainPage.insertAdjacentHTML("beforeend", displayFrontend);
-    });
-  });
-};
