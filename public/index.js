@@ -21,7 +21,10 @@ const search = document.querySelector(".search");
 // connecting backend with frontend
 const connectingBackend = async function () {
   try {
-    const response = await fetch(`http://localhost:4000/public/home`);
+    const response = await fetch(
+      `https://unique-collections.onrender.com/home`
+    );
+    // http://localhost:4000/public/home
 
     if (!response.ok) throw new Error(`Failed to fetch it: ${response.status}`);
 
