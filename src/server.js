@@ -1,13 +1,15 @@
 const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-const PORT = 4000;
 
 app.use(express.json());
 app.use(express.static("public"));
 app.use(cors());
 
+// creating a whiskey API
 app.get("/public/home", (req, res) => {
   const whiskey = [
     {
@@ -59,6 +61,24 @@ app.get("/public/home", (req, res) => {
   res.json(whiskey);
 });
 
-app.listen(PORT, () =>
-  console.log(`You server is running on http://localhost:${PORT}/public/home`)
+// bodyparser
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
 );
+app.use(bodyParser.json());
+
+// mongodb config
+const db = require("../src/config/keys").mongoURI;
+
+// connecting db to mongo
+mongoose
+  .connect(db, { useNewUrlParser: true })
+  .then(() => console.log("MongoDB connected successfully"))
+  .catch((error) => console.log(error));
+
+// listening
+const port = process.env.PORT || 4000;
+
+app.listen(port, () => console.log(`You server is running on ${port}`));
