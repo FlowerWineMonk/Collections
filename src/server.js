@@ -17,8 +17,6 @@ app.get("/public/home", (req, res) => {
       name: "The Emerald Isle",
       category: "Irish",
       quality: "Premium",
-      seller: "The Craft Irish Whiskey Co.",
-      price: "$2,000,000.00",
     },
 
     {
@@ -26,8 +24,6 @@ app.get("/public/home", (req, res) => {
       name: "The Macallan Lalique 50-Year-Old Single Malt Scotch Whisky",
       category: "Scotch",
       quality: "Premium",
-      seller: "Quality Whiskey",
-      price: "$253,291.00",
     },
 
     {
@@ -35,8 +31,6 @@ app.get("/public/home", (req, res) => {
       name: "Old Rip Van Winkle 25 Year Old Kentucky Straight Bourbon Whiskey",
       category: "Bourbon",
       quality: "Premium",
-      seller: "Quality Whiskey",
-      price: "$53,712.00",
     },
 
     {
@@ -44,8 +38,6 @@ app.get("/public/home", (req, res) => {
       name: "Yamazaki 55",
       category: "Japanese",
       quality: "Premium",
-      seller: "Liquor Mountain Ginza 777",
-      price: "$800,000.00",
     },
 
     {
@@ -53,8 +45,6 @@ app.get("/public/home", (req, res) => {
       name: "Bushmills Black Bush",
       category: "Irish",
       quality: "Standart",
-      seller: "Irish & Bourbon Whiskey",
-      price: "$30.00",
     },
   ];
 
